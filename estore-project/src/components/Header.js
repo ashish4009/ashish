@@ -1,4 +1,4 @@
-import {IMG_URL} from '../contants';
+import { useState } from "react";
 
 const Title = () => (
     <a href="/">
@@ -7,6 +7,9 @@ const Title = () => (
 );
 
 const HeaderComponent = () => {
+
+    const [isLoggedIn,setIsLoggedIn]=useState(false);
+
     return (
         <div className='header'>
             <Title />
@@ -18,6 +21,9 @@ const HeaderComponent = () => {
                     <li>Cart</li>
                 </ul>
             </div>
+            {isLoggedIn ? (
+            <button onClick={()=>setIsLoggedIn(false)}>Login</button>
+            ):<button onClick={()=>setIsLoggedIn(true)}>Logout</button>}
         </div>
     );
 };
