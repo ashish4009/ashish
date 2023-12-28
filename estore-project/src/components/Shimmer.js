@@ -1,63 +1,59 @@
 const Shimmer = () => {
   return (
     <>
-    <div class="card">
-        <div class="shimmerBG media"></div>
-        <div class="p-32">
-          <div class="shimmerBG title-line"></div>
-          <div class="shimmerBG title-line end"></div>
-
-          <div class="shimmerBG content-line m-t-24"></div>
-          <div class="shimmerBG content-line"></div>
-          <div class="shimmerBG content-line"></div>
-          <div class="shimmerBG content-line"></div>
-          <div class="shimmerBG content-line end"></div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="shimmerBG media"></div>
-        <div class="p-32">
-          <div class="shimmerBG title-line"></div>
-          <div class="shimmerBG title-line end"></div>
-
-          <div class="shimmerBG content-line m-t-24"></div>
-          <div class="shimmerBG content-line"></div>
-          <div class="shimmerBG content-line"></div>
-          <div class="shimmerBG content-line"></div>
-          <div class="shimmerBG content-line end"></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="shimmerBG media"></div>
-        <div class="p-32">
-          <div class="shimmerBG title-line"></div>
-          <div class="shimmerBG title-line end"></div>
-
-          <div class="shimmerBG content-line m-t-24"></div>
-          <div class="shimmerBG content-line"></div>
-          <div class="shimmerBG content-line"></div>
-          <div class="shimmerBG content-line"></div>
-          <div class="shimmerBG content-line end"></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="shimmerBG media"></div>
-        <div class="p-32">
-          <div class="shimmerBG title-line"></div>
-          <div class="shimmerBG title-line end"></div>
-
-          <div class="shimmerBG content-line m-t-24"></div>
-          <div class="shimmerBG content-line"></div>
-          <div class="shimmerBG content-line"></div>
-          <div class="shimmerBG content-line"></div>
-          <div class="shimmerBG content-line end"></div>
-        </div>
-      </div>
-
-
+      {Array(14)
+        .fill("")
+        .map((e, index) => (
+          <div className="card">
+            <div key={index}>
+              <div className="shimmer-container"></div>
+              <div className="p-12">
+                <div className="shimmer-header"></div>
+                <div className="shimmer-line"></div>
+                <div className="shimmer-line"></div>
+                <div className="shimmer-line"></div>
+                <div className="shimmer-line"></div>
+              </div>
+            </div>
+          </div>
+        ))}
     </>
   );
 };
 
-export default Shimmer;
+const SearchShimmer = () => {
+  return (
+    <>
+      {/* <div className="card">
+        <div key={index}>
+          <div className="shimmer-container"></div>
+          <div className="p-12">
+            <div className="shimmer-header"></div>
+            <div className="shimmer-line"></div>
+            <div className="shimmer-line"></div>
+            <div className="shimmer-line"></div>
+            <div className="shimmer-line"></div>
+          </div>
+        </div>
+      </div> */}
+
+      <div className="p-2 m-2" data-testid="search-bar">
+        <form>
+          <div className="">
+            <div className="">
+              <input
+                className="shimmer-line"
+                // placeholder="Search for restaurants and food"
+                // onChange={(e) => {
+                //   setSearchInput(e?.target?.value);
+                // }}
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+    </>
+  );
+};
+
+export { Shimmer, SearchShimmer };
