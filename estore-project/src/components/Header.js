@@ -13,7 +13,7 @@ const HeaderComponent = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <div className="flex justify-between bg-pink-100 shadow-lg">
+    <div className="flex justify-between bg-pink-100 shadow-lg sm:bg-blue-50 md:bg-yellow-50">
       <Title />
       <div className="nav-items">
         <ul className="flex py-10">
