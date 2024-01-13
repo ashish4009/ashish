@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import HeaderComponent from "./components/Header";
@@ -11,18 +11,28 @@ import ContactComponent from "./components/contact";
 import RestaurantComponent from "./components/Restaurant";
 import Profile from "./components/Profile";
 import { Shimmer } from "./components/Shimmer";
+import UserContext from "./shared/userContext";
 
 //lazy loading, Chunking, code splitting, on demand loading, dynamic import.
 const InstaMart = lazy(() => import("./components/InstaMart"));
 
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "Ashish Nalawade",
+    email: "ashish143@gmail.com",
+  });
+
   return (
-    <React.Fragment>
+    <UserContext.Provider
+      value={{
+        user: user,
+      }}
+    >
       <HeaderComponent />
       {/* <BodyComponent /> */}
       <Outlet />
       <FooterComponent />
-    </React.Fragment>
+    </UserContext.Provider>
   );
 };
 
