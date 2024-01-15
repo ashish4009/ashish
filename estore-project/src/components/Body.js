@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import RestoCard from "./RestoCard";
 import { Shimmer, SearchShimmer } from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../shared/helper";
 import useOnline from "../shared/useOnline";
+import UserContext from "../shared/userContext";
 
 const BodyComponent = () => {
+  const { user, setUser } = useContext(UserContext);
   const [allRestaurents, setallRestaurents] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [FilteredRestaurents, setFilteredRestaurants] = useState([]);
@@ -52,6 +54,18 @@ const BodyComponent = () => {
               onChange={(e) => {
                 setSearchInput(e?.target?.value);
               }}
+            />
+            <input
+              type="text"
+              class="w-96 py-2 pl-2 border rounded-md focus:outline-none focus:border-indigo-500"
+              placeholder="Search"
+              value={user.name}
+              onChange={(e) =>
+                setUser({
+                  name: e.target.value,
+                  email: "ashishnalawade84@gmail.com",
+                })
+              }
             />
           </div>
           <div class="">
