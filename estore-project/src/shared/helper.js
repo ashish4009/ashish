@@ -4,7 +4,6 @@ export function filterData(searchInput, restaurants) {
   const data = restaurants.filter((resto) =>
     resto?.info?.name?.toLowerCase()?.includes?.(searchInput.toLowerCase())
   );
-  console.log(data);
   if (data?.length) {
     return data;
   } else {

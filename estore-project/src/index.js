@@ -12,6 +12,9 @@ import RestaurantComponent from "./components/Restaurant";
 import Profile from "./components/Profile";
 import { Shimmer } from "./components/Shimmer";
 import UserContext from "./shared/userContext";
+import store from "./shared/store";
+import { Provider } from "react-redux";
+import Cart from "./components/cart";
 
 //lazy loading, Chunking, code splitting, on demand loading, dynamic import.
 const InstaMart = lazy(() => import("./components/InstaMart"));
@@ -23,17 +26,19 @@ const AppLayout = () => {
   });
 
   return (
-    <UserContext.Provider
-      value={{
-        user: user,
-        setUser: setUser,
-      }}
-    >
-      <HeaderComponent />
-      {/* <BodyComponent /> */}
-      <Outlet />
-      <FooterComponent />
-    </UserContext.Provider>
+    <Provider store={store}>
+      <UserContext.Provider
+        value={{
+          user: user,
+          setUser: setUser,
+        }}
+      >
+        <HeaderComponent />
+        {/* <BodyComponent /> */}
+        <Outlet />
+        <FooterComponent />
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -73,6 +78,10 @@ const appRouter = createBrowserRouter([
             <InstaMart />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },
